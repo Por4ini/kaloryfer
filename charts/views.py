@@ -29,8 +29,8 @@ def index(request):
         T_zew = 20.0  # stała temperatura poza pokojem
         K1 = 5
         K2 = 6
-        T_oczekiwana = [
-            19]  # temperatura oczekiwana w pokoju (trzeba pobierać z formularza), najlepiej od razu odrzucać bezsensowne wartości(ujemne, czy powyżej 25 stopni)
+        T_oczekiwana = [int(u)]
+        # temperatura oczekiwana w pokoju (trzeba pobierać z formularza), najlepiej od razu odrzucać bezsensowne wartości(ujemne, czy powyżej 25 stopni)
         T_grzejnik = [5]
         T_min = 5
         T_max = 60
