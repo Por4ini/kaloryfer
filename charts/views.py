@@ -20,16 +20,16 @@ def index(request):
     if request.method == 'POST':
         form = request.POST
         t = form['T']
-        Kp = float(form['Kp'])
+        Kp = form['Kp']
         u = form['u']
         Tp = 0.1
         t_sim = 3600
-        t = [t]
+        t = [float(t)]
         N = int(t_sim / Tp) + 1
         T_zew = 20.0  # stała temperatura poza pokojem
         K1 = 5
         K2 = 6
-        T_oczekiwana = [int(u)]
+        T_oczekiwana = [float(u)]
         # temperatura oczekiwana w pokoju (trzeba pobierać z formularza), najlepiej od razu odrzucać bezsensowne wartości(ujemne, czy powyżej 25 stopni)
         T_grzejnik = [5]
         T_min = 5
@@ -41,7 +41,7 @@ def index(request):
         upimin = 0.0
         upimax = 2.0
         Ti = 5  # 5 - 25
-        kp = Kp  # 0.01 - 0.025
+        kp = float(Kp)  # 0.01 - 0.025
         q_grzalki = [0.05]
         q_uciekajace_grzalki = [0.0]
         q_grzejnika = [0.05]
@@ -69,6 +69,7 @@ def index(request):
                 min(max(1 / Cw_powietrza[-1] * (q_grzejnika[-1] - K2 * T_pokoj[-1]) * Tp + T_pokoj[-1], T_min),
                     T_max_pokoju))
             q_uciekajace_grzejnika.append(K2 * (T_pokoj[-1] - T_zew))
+
 
         fig = go.Figure()
         fig.add_trace(
