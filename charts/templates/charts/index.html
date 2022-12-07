@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <title>Projekt z automatyki</title>
+</head>
+<body>
+<h1>Podstawy automatyki</h1>
+<h2>Model kaloryfera</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <input class="pole" type="number" name="T" value="{{ T }}" placeholder="T"><br>
+    <input class="pole" type="text" name="Kp" value="{{ Kp }}" placeholder="Kp"> <br>
+    <input class="pole" type="text" name="u" value="{{ u }}" placeholder="U"> <br>
+    <input type="submit"  id="przycisk" value="Oblicz">
+</form>
+<div id="containter">
+    <h3>Uwagi do symulacji</h3>
+    <p>
+        T to temperatura którą chcemy osiągnąć<br>
+        Kp to stała z przedziału [0,05;0,25]<br>
+        U to sygnał sterujący z przedziału [0,10]
+    </p>
+</div>
+<div style="clear: both;"></div>
+<img src="data:image/>png;base64,{{ data }}" alt="" height="900" width="90%" style="margin-left: 5%">
+{% include "charts/wykresy.html" %}
+<footer>Podstawy automatyki 2022</footer>
+</body>
+</html>
